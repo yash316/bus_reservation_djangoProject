@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+{% block title %} {% endblock %}
+{% block css %} {% endblock %}
+{% block body %}
+<div class="container mt-5 mb-5 pt-5 pb-5">
+    <div class="border rounded p-4 m-4">
+        <h2 class=""><b>Your Bookings</b></h2>
+        <hr>
+        <table class="table">
+            <thead>
+            <tr>
+                <th>Bus Name</th>
+                <th>No. of Seats</th>
+                <th>Contact</th>
+                <th>Source</th>
+                <th>Destination</th>
+                <th>Price</th>
+                <th>Total Cost</th>
+                <th>Travel Date</th>
+                <th>Travel Time</th>
+                <th>Booking Date</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for book in booking %}
+            <tr>
+                <td>{{book.Bus_Name}}</td>
+                <td>{{book.No_Seats}}</td>
+                <td>{{book.Contact}}</td>
+                <td>{{book.From}}</td>
+                <td>{{book.To}}</td>
+                <td>{{book.Price_Per_Ticket}}</td>
+                <td>{{book.Cost}}</td>
+                <td>{{book.T_date}}</td>
+                <td>{{book.T_time}}</td>
+                <td>{{book.booking_Date}}</td>
+            </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+
+{% endblock %}

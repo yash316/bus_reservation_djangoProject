@@ -1,0 +1,104 @@
+{% extends 'base.html' %}
+{% block title %} {% endblock %}
+{% block css %}
+.search-bar{
+background-color: #D84F57;
+}
+{% endblock %}
+{% block body %}
+{% load static %}
+
+
+<!--Search Bus Section Starts-->
+<div class="search-bar pt-4 pb-4 mb-4" id="search-bus">
+    <div class="container text-center  btn-block col-lg-10">
+        <h2 class=""><b>Search Buses</b></h2>
+        <form action="" method="get">
+            <div class="input-group p-4 border rounded">
+                <input type="text" class="form-control rounded" placeholder="Source" name="source" aria-label="Username" required>
+                <!--                <span class="input-group-text">@</span>-->
+                <img class="px-2" src="{% static 'images/arrows-removebg-preview.png' %}" height="55">
+                <input type="text" class="form-control  rounded" placeholder="Destination" name="dest" aria-label="Server" required>
+                <!--                <input type="text" class="form-control mx-3" placeholder="Destination" aria-label="Server">-->
+                <input type="date" class="form-control mx-3 rounded" name="date" aria-label="Server" required>
+                <input type="submit" value="Search" class="btn btn-warning px-5">
+            </div>
+        </form>
+    </div>
+</div>
+<!--Search Bus Section Ends-->
+
+<!--{{result}}-->
+
+{% if result %}
+<div class="container">
+    <div class="border rounded p-4 m-4">
+        <div class="row">
+            <div class="col">
+                <h4 class="pl-4 ml-4 fw-bold">Search Result</h4>
+            </div>
+        </div>
+        <hr>
+        <table class="table">
+            <thead>
+            <tr>
+                <th>ID</th>
+                <th>Bus Name</th>
+                <th>Source</th>
+                <th>Destination</th>
+                <th>No. of Seats</th>
+                <th>No. of Remaining Seats</th>
+                <th>Price</th>
+                <th>Date</th>
+                <th>Time</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for bus in result %}
+            <tr>
+                <td>{{bus.id}}</td>
+                <td>{{bus.bus_Name}}</td>
+                <td>{{bus.source}}</td>
+                <td>{{bus.destination}}</td>
+                <td>{{bus.Nos}}</td>
+                <td>{{bus.rem}}</td>
+                <td>{{bus.price}}</td>
+                <td>{{bus.date}}</td>
+                <td>{{bus.time}}</td>
+            </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+{% else %}
+<h1></h1>
+{% endif %}
+
+
+<!--Tickets booking section starts-->
+<div class="mt-5 mb-5">
+    <div class="container text-center col-lg-5">
+        <h3>Book Your Tickets</h3>
+        <form class="" action="" method="post">
+            {% csrf_token %}
+            <div class="mb-3">
+                <label class="form-label float-left">Enter Bus ID:</label>
+                <input type="text" class="form-control" name="busid" required>
+            </div>
+            <div class="mb-3">
+                <label class="form-label float-left">Number of Seats:</label>
+                <input type="text" class="form-control" name="no_seats" required>
+            </div>
+            <div class="mb-3">
+                <label class="form-label float-left">Contact:</label>
+                <input type="text" class="form-control" name="contact" required>
+            </div>
+            <input type="submit" value="Book Tickets" class="btn btn-success mt-4 col-lg-12">
+        </form>
+    </div>
+</div>
+<!--Tickets booking section ends-->
+
+
+{% endblock %}

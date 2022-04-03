@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+{% block title %} {% endblock %}
+{% block css %} {% endblock %}
+{% block body %}
+{% load static %}
+
+<!--Bill Section starts-->
+<div class="text-center mt-5 pt-5">
+    <img src="{% static 'images/checked (2).png' %}" height="200">
+    <h2>Confirmed</h2>
+    <p>Your Tickets has been booked successfully.</p>
+</div>
+<div class="container mt-5 mb-5 text-center">
+    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+        Bill Details
+    </button>
+
+</div>
+<!--Bill Section ends-->
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Tickets Details</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <ul>
+                    <li><b>Bus Name:</b> {{Bus_Name}}</li>
+                    <li><b>No. of Seats Booked:</b> {{nos}}</li>
+                    <li><b>Contact:</b> {{contact}}</li>
+                    <li><b>Source:</b> {{source}}</li>
+                    <li><b>Destination:</b> {{dest}}</li>
+                    <li><b>Price Per Ticket:</b> {{ppt}}</li>
+                    <li><b>Total Cost:</b> {{cost}}</li>
+                    <li><b>Travel Date:</b> {{tdate}}</li>
+                    <li><b>Travel Time:</b> {{ttime}}</li>
+                </ul>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
